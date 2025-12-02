@@ -66,14 +66,18 @@ public class MainActivity extends AppCompatActivity {
         listViewProducts.setAdapter(adapter);
 
         listViewProducts.setOnItemClickListener((parent, view, position, id) -> {
-            cursor.moveToPosition(position);
+            Cursor c = (Cursor) adapter.getItem(position);
+            if (c == null) return;
 
-            String code = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.COL_CODE));
-            String label = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.COL_LABEL));
-            double price = cursor.getDouble(cursor.getColumnIndexOrThrow(DatabaseHelper.COL_PRICE));
-            int quantity = cursor.getInt(cursor.getColumnIndexOrThrow(DatabaseHelper.COL_QTY));
+            long productId = c.getLong(c.getColumnIndexOrThrow(DatabaseHelper.COL_ID));
+
+            String code = c.getString(c.getColumnIndexOrThrow(DatabaseHelper.COL_CODE));
+            String label = c.getString(c.getColumnIndexOrThrow(DatabaseHelper.COL_LABEL));
+            double price = c.getDouble(c.getColumnIndexOrThrow(DatabaseHelper.COL_PRICE));
+            int quantity = c.getInt(c.getColumnIndexOrThrow(DatabaseHelper.COL_QTY));
 
             Intent intent = new Intent(MainActivity.this, EditProductActivity.class);
+            intent.putExtra("product_id", productId);
             intent.putExtra("product_code", code);
             intent.putExtra("label", label);
             intent.putExtra("price", price);
