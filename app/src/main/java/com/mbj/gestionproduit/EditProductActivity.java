@@ -40,7 +40,6 @@ public class EditProductActivity extends AppCompatActivity {
         btnDelete = findViewById(R.id.edit_btnDelete);
         btnReturn = findViewById(R.id.edit_btnReturn);
 
-        // Get product from Intent (same as you did)
         Intent intent = getIntent();
         code = intent.getStringExtra("product_code");
         String label = intent.getStringExtra("label");

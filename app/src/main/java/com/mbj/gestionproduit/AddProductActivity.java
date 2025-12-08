@@ -91,22 +91,12 @@ public class AddProductActivity extends AppCompatActivity {
 
         btnSubmit.setEnabled(false);
 
-        db.collection("products").document(code).get().addOnSuccessListener(doc -> {
-            if (doc.exists()) {
-                btnSubmit.setEnabled(true);
-                Toast.makeText(this, "Error: code already used", Toast.LENGTH_SHORT).show();
-            } else {
-                db.collection("products").document(code).set(product).addOnSuccessListener(aVoid -> {
-                    Toast.makeText(this, "Product added successfully!", Toast.LENGTH_SHORT).show();
+        db.collection("products").document().set(product).addOnSuccessListener(aVoid -> {
+                    Toast.makeText(this, "Product added", Toast.LENGTH_SHORT).show();
                     finish();
-                }).addOnFailureListener(e -> {
-                    btnSubmit.setEnabled(true);
-                    Toast.makeText(this, "Error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
-                });
-            }
-        }).addOnFailureListener(e -> {
-            btnSubmit.setEnabled(true);
-            Toast.makeText(this, "Error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
-        });
+                }
+
+        ).addOnFailureListener(e -> Toast.makeText(this, "Error: " + e.getMessage(), Toast.LENGTH_SHORT).show());
+
     }
 }

@@ -46,7 +46,6 @@ public class MainActivity extends AppCompatActivity {
 
         data = new ArrayList<>();
 
-        // Keys in each map -> which TextViews in item layout
         String[] from = new String[]{"label", "priceText", "quantityText"};
         int[] to = new int[]{R.id.item_name, R.id.item_price, R.id.item_quantity};
 
@@ -58,8 +57,8 @@ public class MainActivity extends AppCompatActivity {
 
             String code = (String) item.get("code");
             String label = (String) item.get("label");
-            double price = (double) item.get("price");      // stored as Double in map
-            int quantity = (int) item.get("quantity");      // stored as Integer in map
+            double price = (double) item.get("price");
+            int quantity = (int) item.get("quantity");
 
             Intent intent = new Intent(MainActivity.this, EditProductActivity.class);
             intent.putExtra("product_code", code);
@@ -83,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
             data.clear();
 
             for (DocumentSnapshot doc : snap.getDocuments()) {
-                String code = doc.getId();
+                String code = doc.getString("code");
 
                 String label = doc.getString("label");
 
@@ -99,7 +98,6 @@ public class MainActivity extends AppCompatActivity {
                 map.put("price", price);
                 map.put("quantity", quantity);
 
-                // these are just for display formatting in the list item
                 map.put("priceText", String.valueOf(price));
                 map.put("quantityText", String.valueOf(quantity));
 
