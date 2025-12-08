@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1044468743276",
+    "project_id": "androidgestionproduit-bde22",
+    "storage_bucket": "androidgestionproduit-bde22.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1044468743276:android:bce4eac27bf8a98df42c49",
+        "android_client_info": {
+          "package_name": "com.mbj.gestionproduit"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAA_cMcvhQdsZFjDOpfes4eZV-AosPg8m4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
